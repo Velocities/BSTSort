@@ -9,14 +9,6 @@ typedef struct Node {
   struct Node *right;
 } Node;
 
-void BSTSort(int arr[], int size);
-
-void insert(Node *n, int insertionVal);
-
-void inOrderInsert(Node *n);
-
-Node* makeNode(int value);
-
 static unsigned int index = 0;
 
 static int* arrStorage;
