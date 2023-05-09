@@ -1,13 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-typedef struct Node {
-  int val;
-  unsigned int occurrences;
-  struct Node *left;
-  struct Node *right;
-} Node;
+#include "BSTSort.h"
 
 static unsigned int index = 0;
 
