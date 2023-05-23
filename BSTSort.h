@@ -11,8 +11,8 @@ typedef struct Node {
 
 void BSTSort(int arr[], int size);
 
-void insert(Node *n, int insertionVal);
+static void insert(Node *n, int insertionVal);
 
-void inOrderInsert(Node *n);
+static void inOrderInsert(Node *n);
 
 Node* makeNode(int value);

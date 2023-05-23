@@ -3,6 +3,8 @@
 #include <time.h>
 #include "BSTSort.h"
 
+static Node* root;
+
 static unsigned int index = 0;
 
 static int* arrStorage;
@@ -25,7 +27,7 @@ After the tree has been constructed, it populates arrStorage with the sorted val
 storing each value the appropriate number of times. Finally, it resets the static index variable to 0.
 */
 void BSTSort(int arr[], int size) {
-  Node *root = makeNode(arr[0]);
+  root = makeNode(arr[0]);
   // Construct the BST
   for (int i = 1; i < size; i += 1) {
     insert(root, arr[i]);
@@ -34,6 +36,8 @@ void BSTSort(int arr[], int size) {
   int index = 0;
   arrStorage = arr;
   inOrderInsert(root);
+  arrStorage = NULL;
+  root = NULL;
   index = 0;
 }
 
@@ -43,7 +47,7 @@ the binary search tree rooted at n, incrementing the occurrence count for the ex
 value is already in the tree, or creating a new node and inserting it appropriately if the value is 
 not already in the tree.
 */
-void insert(Node *n, int insertionVal) {
+static void insert(Node *n, int insertionVal) {
   while (n != NULL) {
     if (insertionVal == n->val) {
       n->occurrences += 1;
@@ -73,7 +77,7 @@ number of times the value appears in the input array. The function first recursi
 of n, then inserts n->val n->occurrences times into arrStorage, and finally recursively traverses the right 
 subtree of n. After inserting the value of n and its subtrees, the function also frees the memory allocated for the node.
 */
-void inOrderInsert(Node *n) {
+static void inOrderInsert(Node *n) {
   if (n->left != NULL) {
     inOrderInsert(n->left);
   }
